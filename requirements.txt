@@ -1,0 +1,61 @@
+# AMD GPU & NPU Monitoring Toolkit - Python Dependencies
+# Core dependencies for GPU and NPU monitoring
+
+# Windows Management Instrumentation (WMI)
+wmi>=1.5.1
+
+# System and process utilities
+psutil>=5.8.0
+
+# Optional dependencies for advanced features
+# Uncomment if you need these features:
+
+# For advanced mathematical calculations and GPU load generation
+# numpy>=1.21.0
+
+# For data visualization and plotting (if needed)
+# matplotlib>=3.5.0
+
+# For JSON data handling (already included in Python 3.7+)
+# json (built-in)
+
+# For datetime handling (already included in Python 3.7+)
+# datetime (built-in)
+
+# For subprocess management (already included in Python 3.7+)
+# subprocess (built-in)
+
+# For threading support (already included in Python 3.7+)
+# threading (built-in)
+
+# For path operations (already included in Python 3.7+)
+# pathlib (built-in)
+
+# For regular expressions (already included in Python 3.7+)
+# re (built-in)
+
+# For time operations (already included in Python 3.7+)
+# time (built-in)
+
+# For operating system interface (already included in Python 3.7+)
+# os (built-in)
+
+# For system-specific parameters (already included in Python 3.7+)
+# sys (built-in)
+
+# Installation Instructions:
+# 1. Create virtual environment: python -m venv venv
+# 2. Activate virtual environment: 
+#    - Windows: venv\Scripts\activate
+#    - Linux/WSL: source venv/bin/activate
+# 3. Install dependencies: pip install -r requirements.txt
+# 4. Verify installation: python test_wmi_gpu_cpu.py
+
+# System Requirements:
+# - Python 3.7 or higher
+# - Windows 10/11 (for GPU monitoring)
+# - WSL2 with Ubuntu/Debian (for NPU monitoring)
+# - AMD GPU with recent drivers
+# - AMD Software (for temperature monitoring)
+
+# Note: Some dependencies are built into Python and don't need separate installation
