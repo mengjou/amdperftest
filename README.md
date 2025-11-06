@@ -1,5 +1,8 @@
 # AMD GPU & NPU Monitoring Toolkit
 
+**Version:** v1.0.0  
+**Release Date:** November 6, 2025
+
 ## 🎯 Project Overview
 
 This comprehensive toolkit provides working solutions for monitoring AMD GPUs in Windows and AMD NPUs in WSL environments. Based on extensive testing and research, we've identified and implemented the most effective methods for real-time GPU utilization and performance monitoring on AMD platforms.
@@ -39,28 +42,57 @@ This comprehensive toolkit provides working solutions for monitoring AMD GPUs in
 
 ## 🚀 Quick Start
 
-### **1. Basic GPU Monitoring**
+### **Using main.py (Recommended)**
+```bash
+# Run all critical tests (default behavior)
+python main.py
+
+# Run all critical tests (explicit)
+python main.py all-tests
+
+# Run enhanced GPU monitor
+python main.py gpu-monitor --enhanced
+
+# Run basic GPU monitor
+python main.py gpu-monitor
+
+# Run comprehensive GPU test
+python main.py gpu-test
+
+# Run NPU monitoring test
+python main.py npu-test
+
+# Run CPU performance test
+python main.py cpu-test
+
+# Show help
+python main.py --help
+```
+
+### **Direct Script Execution**
+
+#### **1. Basic GPU Monitoring**
 ```bash
 # Run the enhanced GPU monitor
-python enhanced_gpu_monitor.py
+python codes/enhanced_gpu_monitor.py
 
 # Or use the simple monitor
-python amd_gpu_monitor.py
+python codes/amd_gpu_monitor.py
 ```
 
-### **2. GPU Load Testing**
+#### **2. GPU Load Testing**
 ```bash
 # Generate GPU load and monitor simultaneously
-python comprehensive_gpu_test.py
+python codes/comprehensive_gpu_test.py
 
 # Or run a simple load test
-python simple_gpu_test.py
+python codes/simple_gpu_test.py
 ```
 
-### **3. NPU Monitoring (WSL)**
+#### **3. NPU Monitoring (WSL)**
 ```bash
 # Monitor AMD Phoenix NPU
-python test_amd_npu_xrt_smi.py
+python codes/test_amd_npu_xrt_smi.py
 
 # Or use xrt-smi directly
 xrt-smi --list
@@ -123,11 +155,13 @@ pip install -r requirements.txt
 
 ### **3. Verify Installation**
 ```bash
-# Test basic functionality
-python test_wmi_gpu_cpu.py
+# Using main.py (recommended)
+python main.py all-tests
 
-# Test GPU monitoring
-python enhanced_gpu_monitor.py
+# Or test individually
+python main.py gpu-monitor
+python main.py wmi-test
+python main.py cpu-test
 ```
 
 ## 💻 Usage Examples
@@ -135,27 +169,27 @@ python enhanced_gpu_monitor.py
 ### **Real-time GPU Monitoring**
 ```python
 # Run enhanced monitor with 2-second intervals
-python enhanced_gpu_monitor.py
+python codes/enhanced_gpu_monitor.py
 # Choose option 2 for continuous monitoring
 
 # Or use the comprehensive test
-python comprehensive_gpu_test.py
+python codes/comprehensive_gpu_test.py
 # Choose option 1 for quick test
 ```
 
 ### **GPU Load Generation**
 ```python
 # Generate GPU load and monitor
-python gpu_load_generator.py
+python codes/gpu_load_generator.py
 
 # Run WebGL test in browser
-# Open gpu_webgl_test.html in your web browser
+# Open codes/gpu_webgl_test.html in your web browser
 ```
 
 ### **PowerShell GPU Monitoring**
 ```powershell
 # Direct PowerShell monitoring
-powershell -ExecutionPolicy Bypass -File gpu_load.ps1
+powershell -ExecutionPolicy Bypass -File codes/gpu_load.ps1
 
 # Or use Windows Performance Counters directly
 Get-Counter '\GPU Engine(*)\Utilization Percentage'
@@ -167,7 +201,7 @@ Get-Counter '\GPU Engine(*)\Utilization Percentage'
 xrt-smi --list
 
 # Monitor NPU information
-python test_amd_npu_xrt_smi.py
+python codes/test_amd_npu_xrt_smi.py
 
 # Continuous monitoring
 watch -n 1 'xrt-smi --info'
@@ -177,29 +211,48 @@ watch -n 1 'xrt-smi --info'
 
 ```
 amdperftest/
-├── 📚 Documentation/
+├── 📖 README.md                            # This file
+├── 🚀 main.py                              # Main CLI entry point
+├── 📄 version.py                           # Version information
+├── 📄 requirements.txt                     # Python dependencies
+│
+├── 📚 docs/                                # Documentation directory
 │   ├── AMD_GPU_NPU_Monitoring_Guide.md     # Complete monitoring guide
-│   └── Windows_Performance_Counters_vs_WMI_Guide.md  # Technical comparison
+│   ├── Windows_Performance_Counters_vs_WMI_Guide.md  # Technical comparison
+│   └── CPU_Performance_Analysis_Report.md  # CPU performance analysis
 │
-├── 🎮 GPU Monitoring Scripts/
-│   ├── enhanced_gpu_monitor.py             # Advanced real-time monitoring
-│   ├── amd_gpu_monitor.py                  # Practical monitoring solution
-│   ├── gpu_monitor_working.py              # Working monitoring methods
-│   └── comprehensive_gpu_test.py           # Load testing and monitoring
+├── 🔧 tools/                                # Development tools directory
+│   ├── README.md                            # Tools documentation
+│   └── gpu_monitor_working.py              # Development tool (script generator)
 │
-├── 🧪 Testing and Load Generation/
-│   ├── gpu_load_generator.py               # GPU workload generation
-│   ├── simple_gpu_test.py                  # Simple GPU load test
-│   ├── gpu_load.ps1                        # PowerShell load generator
-│   └── gpu_webgl_test.html                 # WebGL GPU test
-│
-├── 🔍 Exploration and Analysis/
-│   ├── test_amd_npu_xrt_smi.py            # NPU monitoring via xrt-smi
-│   ├── test_wmi_gpu_cpu.py                # WMI GPU/CPU information
-│   ├── wmi_gpu_detailed.py                # Detailed WMI exploration
-│   └── wmi_gpu_explorer.py                # WMI class exploration
-│
-└── 📖 README.md                            # This file
+└── 💻 codes/                                # Code files directory
+    ├── README.md                            # Code files overview and descriptions
+    │
+    ├── 🎮 GPU Monitoring Scripts/
+    │   ├── enhanced_gpu_monitor.py          # Advanced real-time monitoring
+    │   ├── amd_gpu_monitor.py               # Practical monitoring solution
+    │   └── gpu_monitoring_test.py           # GPU monitoring testing
+    │
+    ├── 🧪 Testing and Load Generation/
+    │   ├── comprehensive_gpu_test.py        # Load testing and monitoring
+    │   ├── gpu_load_generator.py            # GPU workload generation
+    │   ├── simple_gpu_test.py               # Simple GPU load test
+    │   ├── gpu_load.ps1                     # PowerShell load generator
+    │   └── gpu_webgl_test.html              # WebGL GPU test
+    │
+    ├── 🧠 NPU Monitoring/
+    │   └── test_amd_npu_xrt_smi.py          # NPU monitoring via xrt-smi
+    │
+    ├── 🔍 Exploration and Analysis/
+    │   ├── test_wmi_gpu_cpu.py              # WMI GPU/CPU information
+    │   ├── wmi_gpu_detailed.py              # Detailed WMI exploration
+    │   ├── wmi_gpu_explorer.py             # WMI class exploration
+    │   └── psutil_gpu_test.py              # psutil GPU data test
+    │
+    └── 💻 CPU and Platform-Specific Tests/
+        ├── cpu_performance_efficiency_test.py    # CPU performance testing
+        ├── cpu_monitoring_comparison.py          # CPU monitoring comparison
+        └── qualcomm_performance_counters_test.py  # Qualcomm platform tests (consolidated)
 ```
 
 ## 🔍 Key Findings
@@ -231,7 +284,7 @@ amdperftest/
 #### **1. "WMI Error" or "No GPU metrics available"**
 ```bash
 # Solution: Use Windows Performance Counters instead
-python enhanced_gpu_monitor.py
+python codes/enhanced_gpu_monitor.py
 ```
 
 #### **2. "xrt-smi not found" in WSL**
@@ -244,7 +297,7 @@ sudo apt install xrt-smi
 #### **3. "No active GPU engines" message**
 ```bash
 # Generate GPU load to see utilization
-python simple_gpu_test.py
+python codes/simple_gpu_test.py
 # Or run a GPU-intensive application
 ```
 
